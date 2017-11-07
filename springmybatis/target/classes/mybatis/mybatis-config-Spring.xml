@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- http://www.mybatis.org/mybatis-3/zh/configuration.html -->
+	<settings>  
+        <setting name="cacheEnabled" value="true" />  
+        <setting name="lazyLoadingEnabled" value="true" />  
+        <setting name="multipleResultSetsEnabled" value="true" />  
+        <setting name="useColumnLabel" value="true" />  
+        <setting name="useGeneratedKeys" value="false" />  
+        <setting name="autoMappingBehavior" value="PARTIAL" />  
+        <setting name="defaultExecutorType" value="SIMPLE" />  
+        <setting name="defaultStatementTimeout" value="25" />  
+        <setting name="safeRowBoundsEnabled" value="false" />  
+        <setting name="mapUnderscoreToCamelCase" value="false" />  
+        <setting name="localCacheScope" value="SESSION" />  
+        <setting name="jdbcTypeForNull" value="OTHER" />  
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />  
+    </settings>
+	
+	<!-- 为实体类定义别名 -->
+	<typeAliases>
+		<typeAlias alias="testTableOne"  type="com.bestcxx.stu.springmybatis.model.TestTableOne"/>
+	</typeAliases>
+	
+    
+	<!-- 定义映射器 -->
+	<mappers>
+		<!-- 使用这个方案，可以单独指定Mapper的位置 -->
+		<mapper resource="mybatis/mapper/TestTableOneMapper.xml"/>
+		
+		<!-- 使用下面两个个方法，Mapper.xml 文件位置必须在和其内部 <mapper namespace="">的类在一起，当然，使用注解模式的话，Mapper.xml文件就没有必要存在了 -->
+		
+		<!-- 直接指定一个包去扫描-内保包含多个Mapper配置- -->
+		<!-- <package name="com.bestcxx.stu.springmybatis.dao"/> -->
+		
+		<!-- class 级别的指定 -->
+		<!-- <mapper class="com.bestcxx.stu.springmvc.mapper.UserModelMapper"/>
+		<mapper class="com.bestcxx.stu.springmvc.mapper.UserModelTwoMapper"/> -->
+	</mappers>
+	
+</configuration>
