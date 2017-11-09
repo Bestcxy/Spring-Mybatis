@@ -15,8 +15,7 @@ import com.bestcxx.stu.springmybatis.model.TestTableOne;
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})  
 //@TransactionConfiguration(transactionManager = "defaultTransactionManager",defaultRollback=false)//事务管理    
 @Rollback(true)
-public class TestTableOneServiceTest{
-	
+public class TestTableOneServiceTest {
 	@Autowired
 	private TestTableOneService testTableOneService;
 	
