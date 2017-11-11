@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bestcxx.stu.springmybatis.model.TestTableOne;
@@ -15,7 +16,7 @@ import com.bestcxx.stu.springmybatis.model.TestTableOne;
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})  
 //@TransactionConfiguration(transactionManager = "defaultTransactionManager",defaultRollback=false)//事务管理    
 @Rollback(true)
-public class TestTableOneServiceTest{
+public class TestTableOneServiceTest extends AbstractTransactionalJUnit4SpringContextTests{
 	
 	@Autowired
 	private TestTableOneService testTableOneService;

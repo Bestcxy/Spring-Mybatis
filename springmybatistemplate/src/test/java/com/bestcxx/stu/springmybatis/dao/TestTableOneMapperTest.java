@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bestcxx.stu.springmybatis.model.TestTableOne;
@@ -16,7 +17,7 @@ import com.bestcxx.stu.springmybatis.model.TestTableOne;
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})  
 //@TransactionConfiguration(transactionManager = "defaultTransactionManager",defaultRollback=false)//事务管理    
 @Rollback(true)
-public class TestTableOneMapperTest {
+public class TestTableOneMapperTest extends AbstractTransactionalJUnit4SpringContextTests{
 	
 	@Autowired
     protected SqlSession sqlSession;
@@ -27,6 +28,15 @@ public class TestTableOneMapperTest {
 		Integer id=1;
 		TestTableOne t=testTableOneMapper.selectByPrimaryKey(id);
 		System.out.println("搜索结果:"+t.getComment());
+	}
+	
+	@Test
+	public void testInsert(){
+		TestTableOneMapper testTableOneMapper=sqlSession.getMapper(TestTableOneMapper.class);
+		TestTableOne test=new TestTableOne();
+		test.setId(3);
+		test.setComment("mapper 测试");
+		testTableOneMapper.insert(test);
 	}
 
 }

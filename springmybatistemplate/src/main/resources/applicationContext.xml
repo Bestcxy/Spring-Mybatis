@@ -20,4 +20,5 @@
     <import resource="classpath:spring/applicationContext-basic.xml" /><!-- 基础信息配置 -->
     <import resource="classpath:spring/applicationContext-dao.xml" />  <!-- 数据库连接配置 -->
     <import resource="classpath:spring/applicationContext-bean.xml" />  <!-- bean 配置 -->
+    <import resource="classpath:spring/applicationContext-trans.xml" />  <!-- 事务配置 -->
 </beans>  
