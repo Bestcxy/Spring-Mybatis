@@ -25,10 +25,17 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="testTableOne"  type="com.bestcxx.stu.springmybatis.model.TestTableOne"/>
 	</typeAliases>
 	
-    
-	<!-- 定义映射器 -->
+    <plugins>
+	    <!-- com.github.pagehelper为PageHelper类所在包名 -->
+	    <plugin interceptor="com.github.pagehelper.PageInterceptor">
+	        <property name="helperDialect" value="mysql"/>
+	    </plugin>
+	  </plugins>
+	
+	<!-- 定义映射器，在这里定义需要一个一个，将扫描交给 
+	Spring <property name="mapperLocations" value="classpath:config/mybatis/mapper/*.xml" />   -->
 	<mappers>
-		<!-- 使用这个方案，可以单独指定Mapper的位置 -->
+		<!-- 使用这个方案，可以单独指定Mapper的位置,只能指定一个 -->
 		<mapper resource="mybatis/mapper/TestTableOneMapper.xml"/>
 		
 		<!-- 使用下面两个个方法，Mapper.xml 文件位置必须在和其内部 <mapper namespace="">的类在一起，当然，使用注解模式的话，Mapper.xml文件就没有必要存在了 -->

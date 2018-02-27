@@ -1,6 +1,7 @@
 package com.bestcxx.stu.springmybatis.service;
 
 import java.sql.SQLException;
+import java.util.Map;
 
 import com.bestcxx.stu.springmybatis.model.TestTableOne;
 
@@ -18,4 +19,10 @@ public interface TestTableOneService {
 	 * @return
 	 */
 	void insert(TestTableOne record) throws SQLException;
+	
+	/**
+	 * 分页查询
+	 * @return
+	 */
+	Map<String,Object> getList();
 }

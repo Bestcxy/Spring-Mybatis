@@ -1,13 +1,9 @@
 package com.bestcxx.stu.springmybatis.dao;
 
+import java.util.List;
+
 import com.bestcxx.stu.springmybatis.model.TestTableOne;
 
-/**
- * 测试表 DAP 层
- * test.test_table_one
- * @author WuJieJecket
- *
- */
 public interface TestTableOneMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -20,4 +16,6 @@ public interface TestTableOneMapper {
     int updateByPrimaryKeySelective(TestTableOne record);
 
     int updateByPrimaryKey(TestTableOne record);
+    
+    List<TestTableOne> getList();
 }

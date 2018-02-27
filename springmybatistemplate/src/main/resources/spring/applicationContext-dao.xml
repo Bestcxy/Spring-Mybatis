@@ -56,11 +56,39 @@
 		<property name="dataSource" ref="dataSource" />
 		<!-- 加载mybatis的全局配置文件 -->
 		<property name="configLocation" value="classpath:mybatis/mybatis-config-Spring.xml" />
+		
+		<!-- 将 Spring 的相关配置移植到 Spring 中 -->
+		
+		<!-- 扫描实体类 -->
+		<!-- <property name="typeAliasesPackage" value="com.bestcxx.stu.springmybatis.model" />  -->
+		
+		<!-- mybatis Mapper *.xml 在 Spring 中配置 -->
+		<!-- <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml" />   -->
+		
+		<!-- mybatis 分页插件 -->
+		<!--  <property name="plugins">
+	           <array>
+	               <bean class="com.github.pagehelper.PageInterceptor">
+	                   <property name="properties">
+	                       <value>
+	                           helperDialect=mysql 
+	                           reasonable=true
+	                           supportMethodsArguments=true
+	                           params=count=countSql
+	                           autoRuntimeDialect=true
+	                       </value>
+	                   </property>
+	               </bean>
+	           </array>
+	       </property> 
+	    -->
 	</bean>
 	
-	<!-- 手动配置注入-多数据源配置-参考com.bestcxx.stu.springmvc.mapper.UserModelMapperTest 的 SqlSession 来理解-->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory" />
+	<!-- 配置Mapper扫描器 -Spring 自动为 Mapper 注入 sqlSessionFactory--> 
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <!--这里是今天要说的重点-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+		<property name="basePackage" value="com.bestcxx.stu.springmybatis.dao"/>
 	</bean>
 	
 </beans>

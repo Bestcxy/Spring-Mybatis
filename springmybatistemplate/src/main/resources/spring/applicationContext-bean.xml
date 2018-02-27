@@ -10,6 +10,7 @@
     
     <!-- 自动扫描bean -->  
    
+    <context:component-scan base-package="com.bestcxx.stu.springmybatis.controller"/>
     <context:component-scan base-package="com.bestcxx.stu.springmybatis.service.impl"/>
 	
 	

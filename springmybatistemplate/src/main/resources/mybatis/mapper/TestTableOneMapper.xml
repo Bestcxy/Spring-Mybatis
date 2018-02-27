@@ -1,56 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bestcxx.stu.springmybatis.dao.TestTableOneMapper">
-  <resultMap id="BaseResultMap" type="com.bestcxx.stu.springmybatis.model.TestTableOne">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="comment" jdbcType="VARCHAR" property="comment" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bestcxx.stu.springmybatis.dao.TestTableOneMapper" >
+   
+   <select id="getList" resultType="com.bestcxx.stu.springmybatis.model.TestTableOne">
+  	SELECT
+    <include refid="Base_Column_List" />
+    FROM TEST_TABLE_ONE
+  </select>
+  
+  <!-- 一下代码为自动生成 -->
+  <resultMap id="BaseResultMap" type="com.bestcxx.stu.springmybatis.model.TestTableOne" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     id, comment
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from test_table_one
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from test_table_one
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.bestcxx.stu.springmybatis.model.TestTableOne">
+  <insert id="insert" parameterType="com.bestcxx.stu.springmybatis.model.TestTableOne" >
     insert into test_table_one (id, comment)
     values (#{id,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.bestcxx.stu.springmybatis.model.TestTableOne">
+  <insert id="insertSelective" parameterType="com.bestcxx.stu.springmybatis.model.TestTableOne" >
     insert into test_table_one
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="comment != null">
+      <if test="comment != null" >
         comment,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="comment != null">
+      <if test="comment != null" >
         #{comment,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bestcxx.stu.springmybatis.model.TestTableOne">
+  <update id="updateByPrimaryKeySelective" parameterType="com.bestcxx.stu.springmybatis.model.TestTableOne" >
     update test_table_one
-    <set>
-      <if test="comment != null">
+    <set >
+      <if test="comment != null" >
         comment = #{comment,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.bestcxx.stu.springmybatis.model.TestTableOne">
+  <update id="updateByPrimaryKey" parameterType="com.bestcxx.stu.springmybatis.model.TestTableOne" >
     update test_table_one
     set comment = #{comment,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
