@@ -1,4 +1,4 @@
-# Spring-Mybatis
+# Spring-Mybatis-SpringMVC-分页
 Spring 集合 Mybitas 的几种情况
 
 ·springmybatis 
